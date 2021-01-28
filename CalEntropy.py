@@ -3,6 +3,7 @@ import json
 import numpy as np
 import math
 import pandas as pd 
+import Utilities as util
 
 class Information_Gain:
     """Calculate entropy for splitting criteria as information gain."""
@@ -65,7 +66,8 @@ class Information_Gain:
         # calculate Info(D) -> Evaluate the divergence
         # If the probability of each category is equal, the entropy value is 1, indicating that the classification information is the most cluttered.
         info_D = 0
-        count_target = np.bincount(self.target)  # count of each unique value 
+        count_target = util.count_unique_value(self.target)  # count of each unique value 
+        print(count_target)
         for target in count_target:
             info_D -= (target/total_instance)*math.log(target/total_instance, 2)
 
